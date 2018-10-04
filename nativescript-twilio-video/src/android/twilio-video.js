@@ -90,10 +90,11 @@ var VideoActivity = (function() {
     if (this.cameraCapturer) {
       var cameraSource = this.cameraCapturer.getCameraSource();
       this.cameraCapturer.switchCamera();
-      if (cameraSource === CameraCapturer.CameraSource.BACK_CAMERA) {
-        this.localVideoView.setMirror(false);
-      } else {
+      //replacing the true/false, because switching cam is taking some time // will use timeout here
+      if (cameraSource === "BACK_CAMERA") {
         this.localVideoView.setMirror(true);
+      } else {
+        this.localVideoView.setMirror(false);
       }
     }
   };

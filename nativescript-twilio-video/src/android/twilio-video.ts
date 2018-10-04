@@ -159,19 +159,15 @@ export class VideoActivity {
 
   flipCamera() {
     if (this.cameraCapturer) {
-      let cameraSource = this.cameraCapturer.getCameraSource();
+      var cameraSource = this.cameraCapturer.getCameraSource();
+      //
       this.cameraCapturer.switchCamera();
-      if (cameraSource === CameraCapturer.CameraSource.BACK_CAMERA) {
-        this.localVideoView.setMirror(false);
-      } else {
+      //replacing the true/false, because switching cam is taking some time // will use timeout here
+      if (cameraSource === "BACK_CAMERA") {
         this.localVideoView.setMirror(true);
+      } else {
+        this.localVideoView.setMirror(false);
       }
-
-      // if (thumbnailVideoView.getVisibility() == View.VISIBLE) {
-      //     thumbnailVideoView.setMirror(cameraSource == CameraSource.BACK_CAMERA);
-      // } else {
-      //     primaryVideoView.setMirror(cameraSource == CameraSource.BACK_CAMERA);
-      // }
     }
   }
 
